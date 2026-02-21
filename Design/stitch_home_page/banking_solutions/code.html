@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Banking Solutions | Elite Ventures</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#000047",
+                        "accent-gold": "#C5A059",
+                        "background-light": "#f5f5f8",
+                        "background-dark": "#0f0f23",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-primary dark:text-white antialiased">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full bg-white/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-primary/10 dark:border-white/10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-20">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined !text-2xl">account_balance</span>
+</div>
+<span class="text-xl font-bold tracking-tight text-primary dark:text-white uppercase">Elite Ventures</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-semibold hover:text-accent-gold transition-colors" href="#">Corporate</a>
+<a class="text-sm font-semibold hover:text-accent-gold transition-colors" href="#">Individual</a>
+<a class="text-sm font-semibold hover:text-accent-gold transition-colors" href="#">Compliance</a>
+<a class="text-sm font-semibold hover:text-accent-gold transition-colors" href="#">Contact</a>
+<button class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20">
+                        Apply Now
+                    </button>
+</nav>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="relative overflow-hidden pt-16 pb-24 lg:pt-32 lg:pb-40">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid lg:grid-cols-2 gap-12 items-center">
+<div class="z-10">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 dark:bg-white/5 border border-primary/10 dark:border-white/10 mb-6">
+<span class="size-2 rounded-full bg-accent-gold animate-pulse"></span>
+<span class="text-xs font-bold uppercase tracking-widest text-primary/70 dark:text-white/70">Premier Banking Network</span>
+</div>
+<h1 class="text-5xl lg:text-7xl font-black text-primary dark:text-white leading-[1.1] mb-8">
+                        Corporate &amp; <span class="text-accent-gold">Individual</span> Banking Solutions
+                    </h1>
+<p class="text-lg lg:text-xl text-primary/70 dark:text-white/70 leading-relaxed mb-10 max-w-xl">
+                        Elite Ventures provides streamlined account opening, multi-currency support, and private wealth management for high-net-worth clients and global corporations.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-primary/90 transition-all shadow-xl shadow-primary/20">
+                            Get Started Today
+                        </button>
+<button class="bg-white dark:bg-white/5 border border-primary/10 dark:border-white/10 px-8 py-4 rounded-xl font-bold text-lg hover:bg-background-light dark:hover:bg-white/10 transition-all">
+                            View Credentials
+                        </button>
+</div>
+</div>
+<div class="relative">
+<div class="aspect-video lg:aspect-square rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-primary/20 bg-cover bg-center" data-alt="Modern high-rise office building architectural view" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBfG-YWAhvKWxhjSQCZ90tz__cmlg2RfKdx053uG-t_GO84WSjsLN4zssV8aLnqRYo6btnFPsyvTEgwSRkH5DO_AQEllZsx_phNLOe9IleDk0kON7psrdXpbXRwEg77Dm_i23hm8-XWwP14cMuoa2TWCJhjM0HoeM_VXs8GDwyvdf-eYz5VTl9nAFuHt_f6FDiv7A3KEe_g3Avlg7Kg6zGO85shuIJXpyb63qcFcXd9Xr4eoAAHGR_ZBnFdLN3qgUS8JE7FwmcINhaw');">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
+</div>
+<!-- Floating Stat Card -->
+<div class="absolute -bottom-6 -left-6 bg-white dark:bg-background-dark p-6 rounded-2xl shadow-2xl border border-primary/5 dark:border-white/5 flex items-center gap-4">
+<div class="size-12 rounded-full bg-accent-gold/20 flex items-center justify-center text-accent-gold">
+<span class="material-symbols-outlined">public</span>
+</div>
+<div>
+<div class="text-2xl font-bold">120+</div>
+<div class="text-xs font-medium opacity-60">Partner Jurisdictions</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Service Blocks -->
+<section class="py-24 bg-white dark:bg-background-dark/50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-3xl lg:text-4xl font-black text-primary dark:text-white mb-4">Our Specialized Banking Services</h2>
+<div class="h-1 w-20 bg-accent-gold mx-auto rounded-full"></div>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<!-- Corporate Block -->
+<div class="group p-8 rounded-3xl bg-background-light dark:bg-white/5 border border-transparent hover:border-accent-gold/30 hover:shadow-2xl transition-all duration-300">
+<div class="size-14 rounded-2xl bg-primary text-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined !text-3xl">corporate_fare</span>
+</div>
+<h3 class="text-xl font-extrabold mb-4">Corporate Bank Account Assistance</h3>
+<p class="text-primary/70 dark:text-white/70 leading-relaxed mb-6">
+                        Multi-currency and high-volume accounts for global operations. We facilitate seamless connections with Tier-1 banks worldwide.
+                    </p>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center gap-2 text-sm font-medium"><span class="material-symbols-outlined text-accent-gold !text-lg">check_circle</span> Multi-Currency IBANs</li>
+<li class="flex items-center gap-2 text-sm font-medium"><span class="material-symbols-outlined text-accent-gold !text-lg">check_circle</span> Swift &amp; SEPA Integration</li>
+<li class="flex items-center gap-2 text-sm font-medium"><span class="material-symbols-outlined text-accent-gold !text-lg">check_circle</span> High-Volume Processing</li>
+</ul>
+</div>
+<!-- Individual Block -->
+<div class="group p-8 rounded-3xl bg-background-light dark:bg-white/5 border border-transparent hover:border-accent-gold/30 hover:shadow-2xl transition-all duration-300">
+<div class="size-14 rounded-2xl bg-primary text-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined !text-3xl">person_celebrate</span>
+</div>
+<h3 class="text-xl font-extrabold mb-4">Individual Banking</h3>
+<p class="text-primary/70 dark:text-white/70 leading-relaxed mb-6">
+                        Private wealth management and exclusive financial solutions tailored for high-net-worth individuals and their families.
+                    </p>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center gap-2 text-sm font-medium"><span class="material-symbols-outlined text-accent-gold !text-lg">check_circle</span> Private Wealth Access</li>
+<li class="flex items-center gap-2 text-sm font-medium"><span class="material-symbols-outlined text-accent-gold !text-lg">check_circle</span> Visa/Mastercard Platinum</li>
+<li class="flex items-center gap-2 text-sm font-medium"><span class="material-symbols-outlined text-accent-gold !text-lg">check_circle</span> Dedicated Portfolio Manager</li>
+</ul>
+</div>
+<!-- Compliance Block -->
+<div class="group p-8 rounded-3xl bg-background-light dark:bg-white/5 border border-transparent hover:border-accent-gold/30 hover:shadow-2xl transition-all duration-300">
+<div class="size-14 rounded-2xl bg-primary text-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined !text-3xl">verified_user</span>
+</div>
+<h3 class="text-xl font-extrabold mb-4">Compliance &amp; Pre-qualification</h3>
+<p class="text-primary/70 dark:text-white/70 leading-relaxed mb-6">
+                        Expert vetting to ensure high success rates. We handle KYC/AML documentation to satisfy the strictest regulatory requirements.
+                    </p>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center gap-2 text-sm font-medium"><span class="material-symbols-outlined text-accent-gold !text-lg">check_circle</span> Pre-Submission Audit</li>
+<li class="flex items-center gap-2 text-sm font-medium"><span class="material-symbols-outlined text-accent-gold !text-lg">check_circle</span> AML/KYC Advisory</li>
+<li class="flex items-center gap-2 text-sm font-medium"><span class="material-symbols-outlined text-accent-gold !text-lg">check_circle</span> Jurisdictional Analysis</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Lead Form Section -->
+<section class="py-24 bg-primary text-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid lg:grid-cols-2 gap-16 items-start">
+<div>
+<h2 class="text-4xl font-black mb-6">Pre-qualification Form</h2>
+<p class="text-white/70 text-lg mb-10 leading-relaxed">
+                        Ready to elevate your banking experience? Complete our secure pre-qualification form. Our compliance team will review your profile within 24 hours to match you with the ideal banking partners.
+                    </p>
+<div class="space-y-6">
+<div class="flex items-start gap-4">
+<div class="size-10 rounded-full bg-accent-gold flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary !text-lg">lock</span>
+</div>
+<div>
+<h4 class="font-bold">Secure Submission</h4>
+<p class="text-sm text-white/60 font-display">Your data is encrypted and handled with absolute confidentiality.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="size-10 rounded-full bg-accent-gold flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary !text-lg">speed</span>
+</div>
+<div>
+<h4 class="font-bold">Rapid Review</h4>
+<p class="text-sm text-white/60 font-display">Initial assessment and bank matching within 1 business day.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-3xl p-8 lg:p-10 shadow-2xl text-primary">
+<form class="space-y-6">
+<div class="grid md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-primary/50">Full Name</label>
+<input class="w-full bg-background-light border-0 rounded-xl px-4 py-3 focus:ring-2 focus:ring-accent-gold" placeholder="John Doe" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-primary/50">Email Address</label>
+<input class="w-full bg-background-light border-0 rounded-xl px-4 py-3 focus:ring-2 focus:ring-accent-gold" placeholder="john@company.com" type="email"/>
+</div>
+</div>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-primary/50">Business Type</label>
+<select class="w-full bg-background-light border-0 rounded-xl px-4 py-3 focus:ring-2 focus:ring-accent-gold appearance-none">
+<option>LLC / LTD</option>
+<option>Holding Company</option>
+<option>Individual Wealth</option>
+<option>E-commerce / Fintech</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-primary/50">Annual Revenue (USD)</label>
+<select class="w-full bg-background-light border-0 rounded-xl px-4 py-3 focus:ring-2 focus:ring-accent-gold appearance-none">
+<option>$500k - $2M</option>
+<option>$2M - $10M</option>
+<option>$10M - $50M</option>
+<option>$50M+</option>
+</select>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-primary/50">Target Banking Jurisdiction</label>
+<input class="w-full bg-background-light border-0 rounded-xl px-4 py-3 focus:ring-2 focus:ring-accent-gold" placeholder="e.g. Switzerland, UAE, Singapore" type="text"/>
+</div>
+<button class="w-full bg-accent-gold hover:bg-accent-gold/90 text-primary font-black py-4 rounded-xl text-lg transition-all shadow-xl shadow-accent-gold/20 flex items-center justify-center gap-3" type="button">
+                            Apply for Banking Assistance
+                            <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<p class="text-center text-[10px] text-primary/40 uppercase tracking-widest font-bold">
+                            By clicking submit, you agree to our privacy policy and terms of service.
+                        </p>
+</form>
+</div>
+</div>
+</div>
+</section>
+<!-- Map/CTA Section -->
+<section class="relative py-20 overflow-hidden">
+<div class="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&amp;fit=crop&amp;q=80&amp;w=1500')] bg-cover grayscale" data-alt="Abstract world map network lines" data-location="Global" style=""></div>
+<div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+<h2 class="text-3xl lg:text-4xl font-black mb-6">Global Reach, Personal Touch</h2>
+<p class="text-lg opacity-80 mb-10 leading-relaxed">
+                Whether you're looking for offshore privacy or onshore efficiency, our network spans the globe's most prestigious financial hubs. Join the elite.
+            </p>
+<div class="flex justify-center gap-12 flex-wrap opacity-60 grayscale hover:grayscale-0 transition-all">
+<span class="font-black text-2xl">ZURICH</span>
+<span class="font-black text-2xl">LONDON</span>
+<span class="font-black text-2xl">DUBAI</span>
+<span class="font-black text-2xl">SINGAPORE</span>
+<span class="font-black text-2xl">NEW YORK</span>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-primary text-white pt-20 pb-10 border-t border-white/5">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid md:grid-cols-4 gap-12 mb-16">
+<div class="col-span-2 md:col-span-1">
+<div class="flex items-center gap-3 mb-6">
+<div class="size-6 bg-accent-gold rounded flex items-center justify-center text-primary">
+<span class="material-symbols-outlined !text-lg">account_balance</span>
+</div>
+<span class="text-lg font-bold uppercase tracking-tight">Elite Ventures</span>
+</div>
+<p class="text-sm text-white/50 leading-relaxed">
+                        Bespoke banking and corporate structuring for the global elite. Facilitating financial excellence since 2012.
+                    </p>
+</div>
+<div>
+<h5 class="font-bold mb-6 text-accent-gold uppercase tracking-widest text-xs">Solutions</h5>
+<ul class="space-y-4 text-sm text-white/70">
+<li><a class="hover:text-white transition-colors" href="#">Corporate Accounts</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Private Banking</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Asset Protection</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Fintech Banking</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold mb-6 text-accent-gold uppercase tracking-widest text-xs">Support</h5>
+<ul class="space-y-4 text-sm text-white/70">
+<li><a class="hover:text-white transition-colors" href="#">Pre-qualification</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Compliance Hub</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Documentation</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Help Desk</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold mb-6 text-accent-gold uppercase tracking-widest text-xs">Contact</h5>
+<ul class="space-y-4 text-sm text-white/70">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined !text-sm">mail</span>
+                            elite@ventures.com
+                        </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined !text-sm">call</span>
+                            +1 (800) ELITE-VIP
+                        </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined !text-sm">pin_drop</span>
+                            Financial District, NY
+                        </li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-white/10 flex flex-col md:row-reverse md:flex-row justify-between items-center gap-6">
+<div class="flex gap-6">
+<a class="text-xs text-white/40 hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="text-xs text-white/40 hover:text-white transition-colors" href="#">Terms of Service</a>
+<a class="text-xs text-white/40 hover:text-white transition-colors" href="#">AML Policy</a>
+</div>
+<p class="text-xs text-white/40">© 2024 Elite Ventures Banking Group. All rights reserved.</p>
+</div>
+</div>
+</footer>
+</body></html>
