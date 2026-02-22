@@ -30,3 +30,11 @@ body {
   min-height: 100vh;
   font-family: "Inter", sans-serif;
 }
+
+/* Gold gradient text (About Us hero) */
+.gold-gradient-text {
+  background: linear-gradient(to right, #C5A059, #E2C284);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

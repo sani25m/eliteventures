@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import LogoIcon from "./LogoIcon";
+import CompanyLogo from "./CompanyLogo";
 
 const QUICK_LINKS = [
   { label: "Our Story", href: "/about-us" },
@@ -23,14 +23,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="space-y-6">
-            <div className="flex items-center gap-2">
-              <div className="bg-white p-1 rounded">
-                <LogoIcon className="w-6 h-6 text-primary" />
-              </div>
-              <span className="text-xl font-black tracking-tight uppercase">
-                Elite Ventures
-              </span>
-            </div>
+            <CompanyLogo showLink={true} imgClassName="max-h-10" />
             <p className="text-slate-400 text-sm leading-relaxed">
               The UAE&apos;s premier consultancy for business formation, corporate banking, and luxury tourism services. Empowering global expansion through local excellence.
             </p>

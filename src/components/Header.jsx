@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import LogoIcon from "./LogoIcon";
+import CompanyLogo from "./CompanyLogo";
 
 const MEGA_MENU_ITEMS = [
   { icon: "domain", title: "Business Formation", description: "Mainland, Freezone & Offshore setup.", to: "/company-formation" },
@@ -28,14 +28,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full bg-white/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-primary/10 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <Link to="/" className="flex items-center gap-2 group cursor-pointer">
-            <div className="bg-primary p-1.5 rounded-lg">
-              <LogoIcon />
-            </div>
-            <span className="text-2xl font-black tracking-tight text-primary dark:text-white uppercase">
-              Elite Ventures
-            </span>
-          </Link>
+          <CompanyLogo className="group" imgClassName="max-h-10 invert dark:invert-0" />
 
           <nav className="hidden lg:flex items-center space-x-8">
             <div
