@@ -38,3 +38,13 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* Gold gradient button (Project Management CTA) */
+.gold-gradient {
+  background: linear-gradient(135deg, #C5A059 0%, #E2C48D 50%, #B38B45 100%);
+}
+
+/* Hero gradient overlay (Tax & Compliance) */
+.gradient-overlay {
+  background: linear-gradient(90deg, rgba(0,0,71,0.95) 0%, rgba(0,0,71,0.7) 100%);
+}

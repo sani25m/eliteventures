@@ -12,6 +12,7 @@ export default {
         "accent-gold": "#C5A059",
         "background-light": "#f5f5f8",
         "background-dark": "#0f0f23",
+        "navy-muted": "#1a1a5a",
       },
       fontFamily: {
         "display": ["Inter", "sans-serif"],
