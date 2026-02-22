@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import CompanyLogo from "./CompanyLogo";
 
 export default function CompanyFormationFooter() {
   return (
@@ -6,13 +7,8 @@ export default function CompanyFormationFooter() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
           <div className="md:col-span-1">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="size-8 bg-accent-gold flex items-center justify-center rounded text-primary">
-                <span className="material-symbols-outlined text-sm font-bold">account_balance</span>
-              </div>
-              <span className="text-xl font-black text-white">
-                ELITE<span className="text-accent-gold">VENTURES</span>
-              </span>
+            <div className="mb-6">
+              <CompanyLogo imgClassName="max-h-10 brightness-0 invert" />
             </div>
             <p className="text-sm leading-relaxed mb-6">
               UAE&apos;s premier boutique consultancy for business formation and corporate services. Trusted by 2000+ entrepreneurs worldwide.

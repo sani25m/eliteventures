@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import CompanyLogo from "./CompanyLogo";
 
 export default function TaxComplianceFooter() {
   return (
@@ -6,13 +7,8 @@ export default function TaxComplianceFooter() {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div>
-            <div className="flex items-center gap-2 mb-8">
-              <div className="w-8 h-8 bg-accent-gold flex items-center justify-center rounded">
-                <span className="text-primary font-bold text-lg italic">EV</span>
-              </div>
-              <span className="text-xl font-extrabold tracking-tight uppercase">
-                Elite Ventures
-              </span>
+            <div className="mb-8">
+              <CompanyLogo imgClassName="max-h-10 brightness-0 invert" />
             </div>
             <p className="text-slate-400 text-sm leading-relaxed mb-6">
               Premium corporate services, tax advisory, and compliance management for elite enterprises across the MENA region.

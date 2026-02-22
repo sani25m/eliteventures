@@ -1,17 +1,10 @@
 import { Link } from "react-router-dom";
-import LogoIcon from "./LogoIcon";
+import CompanyLogo from "./CompanyLogo";
 
 export default function LuxuryTourismHeader() {
   return (
     <header className="sticky top-0 z-50 w-full bg-white/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-primary/10 px-6 lg:px-20 py-4 flex items-center justify-between">
-      <Link to="/" className="flex items-center gap-3">
-        <div className="text-primary dark:text-white">
-          <LogoIcon className="w-8 h-8 text-primary dark:text-white" />
-        </div>
-        <h2 className="text-primary dark:text-white text-xl font-black tracking-tight uppercase">
-          ELITE VENTURES
-        </h2>
-      </Link>
+      <CompanyLogo imgClassName="max-h-10 invert dark:invert-0" />
       <nav className="hidden md:flex items-center gap-8">
         <a href="#itinerary" className="text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors uppercase tracking-wider">
           Luxury Sri Lanka

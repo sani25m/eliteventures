@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import CompanyLogo from "./CompanyLogo";
 
 export default function ProjectManagementFooter() {
   return (
@@ -6,11 +7,8 @@ export default function ProjectManagementFooter() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-12 mb-16">
           <div className="md:col-span-1">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="size-8 flex items-center justify-center rounded bg-primary text-accent-gold border border-accent-gold/30">
-                <span className="material-symbols-outlined text-xl">account_balance</span>
-              </div>
-              <span className="text-white text-lg font-black tracking-tight">ELITE VENTURES</span>
+            <div className="mb-6">
+              <CompanyLogo imgClassName="max-h-10 brightness-0 invert" />
             </div>
             <p className="text-sm leading-relaxed mb-6">
               Pioneering high-impact strategic advisory and institutional project management for the world&apos;s most ambitious leaders.

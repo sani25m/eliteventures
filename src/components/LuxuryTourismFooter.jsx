@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom";
-import LogoIcon from "./LogoIcon";
+import CompanyLogo from "./CompanyLogo";
 
 export default function LuxuryTourismFooter() {
   return (
     <footer className="bg-primary text-white pt-20 pb-10 px-6 lg:px-20 border-t border-white/5">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
         <div className="lg:col-span-1">
-          <div className="flex items-center gap-3 mb-6">
-            <LogoIcon className="w-8 h-8 text-white" />
-            <h2 className="text-xl font-black tracking-tight uppercase">ELITE VENTURES</h2>
+          <div className="mb-6">
+            <CompanyLogo imgClassName="max-h-10 brightness-0 invert" />
           </div>
           <p className="text-white/60 leading-relaxed text-sm">
             Redefining luxury travel through curated experiences, private access, and unrivaled local expertise since 1998.

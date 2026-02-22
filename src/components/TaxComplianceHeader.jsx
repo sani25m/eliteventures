@@ -1,17 +1,11 @@
 import { Link } from "react-router-dom";
+import CompanyLogo from "./CompanyLogo";
 
 export default function TaxComplianceHeader() {
   return (
     <header className="fixed w-full z-50 bg-white/95 dark:bg-background-dark/95 backdrop-blur-sm border-b border-primary/10 shadow-sm">
       <div className="container mx-auto px-4 lg:px-8 py-4 flex justify-between items-center">
-        <Link to="/" className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-primary flex items-center justify-center rounded">
-            <span className="text-accent-gold font-bold text-xl italic">EV</span>
-          </div>
-          <span className="text-2xl font-extrabold tracking-tight text-primary dark:text-white uppercase">
-            Elite Ventures
-          </span>
-        </Link>
+        <CompanyLogo imgClassName="max-h-10 invert dark:invert-0" />
         <nav className="hidden md:flex space-x-8 text-sm font-semibold uppercase tracking-wider">
           <Link to="/" className="text-primary dark:text-slate-300 hover:text-accent-gold transition-colors">
             Home
