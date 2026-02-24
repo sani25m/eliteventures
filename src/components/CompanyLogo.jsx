@@ -2,9 +2,10 @@ import { Link } from "react-router-dom";
 
 /**
  * Company logo image (Elite Ventures FZE).
- * Served from public/company-logo.jpg.
+ * Official logo — do not change colors (no invert/filters).
+ * Served from public/Company_Logo.jpg.
  */
-const LOGO_SRC = "/company-logo.jpg";
+const LOGO_SRC = "/Company_Logo.jpg";
 
 export default function CompanyLogo({
   to = "/",

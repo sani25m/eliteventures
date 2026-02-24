@@ -7,7 +7,7 @@ export default function LuxuryTourismFooter() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
         <div className="lg:col-span-1">
           <div className="mb-6">
-            <CompanyLogo imgClassName="max-h-10 brightness-0 invert" />
+            <CompanyLogo imgClassName="max-h-10" />
           </div>
           <p className="text-white/60 leading-relaxed text-sm">
             Redefining luxury travel through curated experiences, private access, and unrivaled local expertise since 1998.

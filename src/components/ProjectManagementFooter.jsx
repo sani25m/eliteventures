@@ -8,7 +8,7 @@ export default function ProjectManagementFooter() {
         <div className="grid md:grid-cols-4 gap-12 mb-16">
           <div className="md:col-span-1">
             <div className="mb-6">
-              <CompanyLogo imgClassName="max-h-10 brightness-0 invert" />
+              <CompanyLogo imgClassName="max-h-10" />
             </div>
             <p className="text-sm leading-relaxed mb-6">
               Pioneering high-impact strategic advisory and institutional project management for the world&apos;s most ambitious leaders.

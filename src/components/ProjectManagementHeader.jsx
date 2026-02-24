@@ -6,7 +6,7 @@ export default function ProjectManagementHeader() {
     <header className="sticky top-0 z-50 w-full bg-white/95 dark:bg-background-dark/95 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <CompanyLogo imgClassName="max-h-10 invert dark:invert-0" />
+          <CompanyLogo imgClassName="max-h-10" />
           <span className="text-[10px] text-accent-gold font-bold uppercase tracking-[0.2em] leading-none hidden sm:block">
             Global Advisory
           </span>

@@ -28,7 +28,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full bg-white/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-primary/10 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <CompanyLogo className="group" imgClassName="max-h-10 invert dark:invert-0" />
+          <CompanyLogo className="group" imgClassName="max-h-10" />
 
           <nav className="hidden lg:flex items-center space-x-8">
             <div

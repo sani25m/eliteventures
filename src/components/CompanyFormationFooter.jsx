@@ -8,7 +8,7 @@ export default function CompanyFormationFooter() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
           <div className="md:col-span-1">
             <div className="mb-6">
-              <CompanyLogo imgClassName="max-h-10 brightness-0 invert" />
+              <CompanyLogo imgClassName="max-h-10" />
             </div>
             <p className="text-sm leading-relaxed mb-6">
               UAE&apos;s premier boutique consultancy for business formation and corporate services. Trusted by 2000+ entrepreneurs worldwide.

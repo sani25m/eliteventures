@@ -5,7 +5,7 @@ export default function TaxComplianceHeader() {
   return (
     <header className="fixed w-full z-50 bg-white/95 dark:bg-background-dark/95 backdrop-blur-sm border-b border-primary/10 shadow-sm">
       <div className="container mx-auto px-4 lg:px-8 py-4 flex justify-between items-center">
-        <CompanyLogo imgClassName="max-h-10 invert dark:invert-0" />
+        <CompanyLogo imgClassName="max-h-10" />
         <nav className="hidden md:flex space-x-8 text-sm font-semibold uppercase tracking-wider">
           <Link to="/" className="text-primary dark:text-slate-300 hover:text-accent-gold transition-colors">
             Home

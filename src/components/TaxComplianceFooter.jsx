@@ -8,7 +8,7 @@ export default function TaxComplianceFooter() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div>
             <div className="mb-8">
-              <CompanyLogo imgClassName="max-h-10 brightness-0 invert" />
+              <CompanyLogo imgClassName="max-h-10" />
             </div>
             <p className="text-slate-400 text-sm leading-relaxed mb-6">
               Premium corporate services, tax advisory, and compliance management for elite enterprises across the MENA region.

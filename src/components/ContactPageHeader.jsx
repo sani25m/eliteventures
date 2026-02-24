@@ -5,7 +5,7 @@ export default function ContactPageHeader() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-background-dark/90 backdrop-blur-md px-6 py-3 lg:px-20">
       <div className="mx-auto flex max-w-7xl items-center justify-between">
-        <CompanyLogo imgClassName="max-h-10 invert dark:invert-0" />
+        <CompanyLogo imgClassName="max-h-10" />
         <nav className="hidden items-center gap-8 lg:flex">
           <Link to="/" className="text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors">
             Home
