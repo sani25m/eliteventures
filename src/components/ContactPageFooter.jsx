@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import CompanyLogo from "./CompanyLogo";
+import NewsletterForm from "./NewsletterForm";
 
 export default function ContactPageFooter() {
   return (
@@ -46,16 +47,15 @@ export default function ContactPageFooter() {
           <div>
             <h3 className="text-sm font-bold uppercase tracking-widest text-accent-gold">Newsletter</h3>
             <p className="mt-6 text-sm text-blue-100/60">Stay updated with market insights and new venture opportunities.</p>
-            <form className="mt-4 flex" onSubmit={(e) => e.preventDefault()}>
-              <input
-                type="email"
-                placeholder="Email address"
-                className="w-full rounded-l-lg border-none bg-white/10 p-3 text-sm text-white placeholder:text-white/40 focus:ring-1 focus:ring-accent-gold focus:outline-none"
+            <div className="mt-4">
+              <NewsletterForm
+                inputClassName="w-full rounded-l-lg border-none bg-white/10 p-3 text-sm text-white placeholder:text-white/40 focus:ring-1 focus:ring-accent-gold focus:outline-none"
+                buttonClassName="rounded-r-lg bg-accent-gold px-4 py-3 text-primary transition-colors hover:bg-accent-gold/90 font-bold"
+                messageSuccessClass="text-emerald-300 text-sm mt-2"
+                messageErrorClass="text-red-300 text-sm mt-2"
+                buttonLabel="Join"
               />
-              <button type="submit" className="rounded-r-lg bg-accent-gold px-4 py-3 text-primary transition-colors hover:bg-accent-gold/90 font-bold">
-                <span className="material-symbols-outlined">chevron_right</span>
-              </button>
-            </form>
+            </div>
           </div>
         </div>
         <div className="mt-20 border-t border-white/10 pt-8 text-center lg:flex lg:items-center lg:justify-between lg:text-left">

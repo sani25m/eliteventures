@@ -10,11 +10,11 @@ const QUICK_LINKS = [
 ];
 
 const SERVICE_LINKS = [
-  { label: "Business Formation", href: "/company-formation" },
-  { label: "Corporate Banking", href: "/banking-solutions" },
-  { label: "Project Management", href: "/project-management-advisory" },
-  { label: "Tax & VAT Advisory", href: "/tax-compliance" },
-  { label: "Luxury Tourism", href: "/luxury-tourism" },
+  { label: "Business Formation", href: "/company-formation#form" },
+  { label: "Corporate Banking", href: "/banking-solutions#form" },
+  { label: "Project Management", href: "/project-management-advisory#form" },
+  { label: "Tax & VAT Advisory", href: "/tax-compliance#consultation" },
+  { label: "Luxury Tourism", href: "/luxury-tourism#form" },
 ];
 
 export default function Footer() {

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import TaxComplianceHeader from "../components/TaxComplianceHeader";
 import TaxComplianceFooter from "../components/TaxComplianceFooter";
+import { submitForm } from "../api/client";
 
 const HERO_IMAGE =
   "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80";
@@ -66,13 +67,27 @@ export default function TaxCompliancePage() {
     message: "",
   });
 
+  const [submitStatus, setSubmitStatus] = useState({ type: "", message: "" });
+  const [submitting, setSubmitting] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitStatus({ type: "", message: "" });
+    setSubmitting(true);
+    try {
+      await submitForm("tax-compliance", formData);
+      setSubmitStatus({ type: "success", message: "Thank you. We will contact you to schedule your tax consultation." });
+      setFormData({ companyName: "", industry: INDUSTRY_OPTIONS[0], contactPerson: "", serviceOfInterest: SERVICE_OPTIONS[0], message: "" });
+    } catch (err) {
+      setSubmitStatus({ type: "error", message: err.message || "Something went wrong. Please try again." });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -308,11 +323,17 @@ export default function TaxCompliancePage() {
                     className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-3 focus:ring-2 focus:ring-accent-gold outline-none transition-all text-slate-900 dark:text-slate-200"
                   />
                 </div>
+                {submitStatus.message && (
+                  <p className={`text-sm ${submitStatus.type === "success" ? "text-green-400" : "text-red-300"}`}>
+                    {submitStatus.message}
+                  </p>
+                )}
                 <button
                   type="submit"
-                  className="w-full bg-primary text-white py-4 rounded-lg font-bold uppercase tracking-widest hover:bg-slate-900 dark:hover:bg-slate-800 transition-all mt-4"
+                  disabled={submitting}
+                  className="w-full bg-primary text-white py-4 rounded-lg font-bold uppercase tracking-widest hover:bg-slate-900 dark:hover:bg-slate-800 transition-all mt-4 disabled:opacity-70 disabled:pointer-events-none"
                 >
-                  Schedule Tax Consultation
+                  {submitting ? "Sending…" : "Schedule Tax Consultation"}
                 </button>
               </form>
             </div>

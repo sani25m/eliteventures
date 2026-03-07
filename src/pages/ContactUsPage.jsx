@@ -1,6 +1,8 @@
 import { useState } from "react";
 import ContactPageHeader from "../components/ContactPageHeader";
 import ContactPageFooter from "../components/ContactPageFooter";
+import { useUserAuth } from "../context/UserAuthContext";
+import { submitForm } from "../api/client";
 
 const SERVICE_OPTIONS = [
   "Venture Capital Investment",
@@ -14,6 +16,7 @@ const GOOGLE_MAPS_EMBED_URL = "https://www.google.com/maps/embed?pb=!1m18!1m12!1
 const WHATSAPP_NUMBER = "97140000000";
 
 export default function ContactUsPage() {
+  const { user } = useUserAuth();
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -23,14 +26,24 @@ export default function ContactUsPage() {
     message: "",
   });
 
+  const [submitStatus, setSubmitStatus] = useState({ type: "", message: "" });
+  const [submitting, setSubmitting] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission (e.g. API call)
+    setSubmitStatus({ type: "", message: "" });
+    try {
+      await submitForm("contact", formData, user?.id ?? undefined);
+      setSubmitStatus({ type: "success", message: "Thank you. We will contact you within 24 hours." });
+      setFormData({ fullName: "", email: "", company: "", phone: "", serviceInterest: SERVICE_OPTIONS[0], message: "" });
+    } catch (err) {
+      setSubmitStatus({ type: "error", message: err.message || "Something went wrong. Please try again." });
+    }
   };
 
   return (
@@ -57,7 +70,7 @@ export default function ContactUsPage() {
       </section>
 
       {/* Form & Contact Details */}
-      <main className="mx-auto -mt-16 mb-20 max-w-7xl px-6 lg:px-20">
+      <main className="mx-auto -mt-16 mb-20 max-w-7xl px-6 lg:px-20" id="form">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">
           {/* Consultation Form */}
           <div className="lg:col-span-2">
@@ -148,12 +161,18 @@ export default function ContactUsPage() {
                     className="w-full rounded-lg border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-800 p-4 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none"
                   />
                 </div>
+                {submitStatus.message && (
+                  <p className={`text-sm ${submitStatus.type === "success" ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}`}>
+                    {submitStatus.message}
+                  </p>
+                )}
                 <button
                   type="submit"
-                  className="flex w-full items-center justify-center gap-3 rounded-lg bg-primary py-4 text-lg font-bold text-white transition-all hover:bg-primary/90 hover:shadow-lg active:scale-[0.98]"
+                  disabled={submitting}
+                  className="flex w-full items-center justify-center gap-3 rounded-lg bg-primary py-4 text-lg font-bold text-white transition-all hover:bg-primary/90 hover:shadow-lg active:scale-[0.98] disabled:opacity-70 disabled:pointer-events-none"
                 >
                   <span className="material-symbols-outlined">send</span>
-                  Request Consultation
+                  {submitting ? "Sending…" : "Request Consultation"}
                 </button>
               </form>
             </div>

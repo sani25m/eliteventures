@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ProjectManagementHeader from "../components/ProjectManagementHeader";
 import ProjectManagementFooter from "../components/ProjectManagementFooter";
+import { submitForm } from "../api/client";
 
 const HERO_BG =
   "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80";
@@ -73,13 +74,27 @@ export default function ProjectManagementPage() {
     serviceOfInterest: SERVICE_OPTIONS[0],
   });
 
+  const [submitStatus, setSubmitStatus] = useState({ type: "", message: "" });
+  const [submitting, setSubmitting] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitStatus({ type: "", message: "" });
+    setSubmitting(true);
+    try {
+      await submitForm("project-management", formData);
+      setSubmitStatus({ type: "success", message: "Thank you. We will schedule your advisory session." });
+      setFormData({ fullName: "", workEmail: "", companyName: "", serviceOfInterest: SERVICE_OPTIONS[0] });
+    } catch (err) {
+      setSubmitStatus({ type: "error", message: err.message || "Something went wrong. Please try again." });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -114,8 +129,14 @@ export default function ProjectManagementPage() {
             </p>
             <div className="flex flex-wrap gap-4 pt-4">
               <a
-                href="#services"
+                href="#form"
                 className="bg-accent-gold hover:bg-accent-gold/90 text-primary px-8 py-4 rounded-xl font-extrabold text-lg transition-all transform hover:-translate-y-1"
+              >
+                Request Advisory Session
+              </a>
+              <a
+                href="#services"
+                className="bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-md px-8 py-4 rounded-xl font-bold text-lg transition-all"
               >
                 View Our Services
               </a>
@@ -263,7 +284,7 @@ export default function ProjectManagementPage() {
       </section>
 
       {/* CTA Form */}
-      <section className="py-24 bg-primary text-white">
+      <section id="form" className="py-24 bg-primary text-white">
         <div className="max-w-5xl mx-auto px-6">
           <div className="bg-white/5 backdrop-blur-md rounded-3xl p-8 md:p-16 border border-white/10 shadow-2xl">
             <div className="grid lg:grid-cols-2 gap-16">
@@ -363,12 +384,18 @@ export default function ProjectManagementPage() {
                     ))}
                   </select>
                 </div>
+                {submitStatus.message && (
+                  <p className={`text-sm ${submitStatus.type === "success" ? "text-green-400" : "text-red-300"}`}>
+                    {submitStatus.message}
+                  </p>
+                )}
                 <div className="pt-4">
                   <button
                     type="submit"
-                    className="w-full gold-gradient text-primary font-black py-4 rounded-xl shadow-xl shadow-accent-gold/20 transform hover:-translate-y-1 transition-all uppercase tracking-widest"
+                    disabled={submitting}
+                    className="w-full gold-gradient text-primary font-black py-4 rounded-xl shadow-xl shadow-accent-gold/20 transform hover:-translate-y-1 transition-all uppercase tracking-widest disabled:opacity-70 disabled:pointer-events-none"
                   >
-                    Request Advisory Session
+                    {submitting ? "Sending…" : "Request Advisory Session"}
                   </button>
                 </div>
               </form>

@@ -18,6 +18,23 @@ const PARTNERS = [
   { icon: "token", name: "Nexus Equity" },
 ];
 
+const FOUNDER = {
+  name: "Godfrey B. Daulagala",
+  title: "Founder & CEO | Elite Ventures FZE (UAE)",
+  image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=750&fit=crop&q=80",
+  bio: "Founder and CEO of Elite Ventures FZE, a UAE-based consultancy providing end-to-end business solutions including company formation, banking support, insurance advisory, tax coordination, and digital services.",
+  experience: "With over 20 years of experience in banking and financial services, I bring expertise in Islamic banking, conventional banking, investment banking, corporate finance, and business development across the UAE and regional markets.",
+  credentials: [
+    "Bachelor's Degree in Business Management – University of Kelaniya",
+    "MBA (Reading) – Cardiff Metropolitan University",
+    "Banking & Finance – Institute of Bankers of Sri Lanka",
+    "Marketing – Chartered Institute of Marketing",
+  ],
+  passion: "I am passionate about simplifying complex business frameworks and building long-term, value-driven partnerships.",
+  philosophy: "Be simple. Be true. And the right people will value you.",
+  philosophyTitle: "Leadership Philosophy",
+};
+
 const LEADERSHIP = [
   { name: "Alistair Sterling", role: "Founding Partner & CEO", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=750&fit=crop&q=80" },
   { name: "Elena Rodriguez", role: "Chief Investment Officer", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=750&fit=crop&q=80" },
@@ -88,6 +105,53 @@ export default function AboutUsPage() {
                   <div>
                     <h3 className="font-bold text-primary dark:text-white text-xl">Our Vision</h3>
                     <p className="text-slate-600 dark:text-slate-400">To be the world&apos;s most trusted partner in cross-border business expansion and sustainable value creation.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Founder & CEO */}
+      <section className="py-24 bg-background-light dark:bg-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-primary dark:text-white mb-4">
+              Founder & CEO
+            </h2>
+            <div className="w-24 h-1 bg-accent-gold mx-auto mb-6" />
+          </div>
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white dark:bg-background-dark rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+              <div className="md:flex">
+                <div className="md:w-80 flex-shrink-0">
+                  <div className="aspect-[3/4] md:aspect-auto md:h-full">
+                    <img
+                      src={FOUNDER.image}
+                      alt={FOUNDER.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+                <div className="p-8 md:p-10 flex flex-col justify-center">
+                  <h3 className="text-2xl font-bold text-primary dark:text-white">{FOUNDER.name}</h3>
+                  <p className="text-accent-gold font-semibold text-sm uppercase tracking-wider mt-1">{FOUNDER.title}</p>
+                  <p className="text-slate-600 dark:text-slate-400 mt-6 leading-relaxed">{FOUNDER.bio}</p>
+                  <p className="text-slate-600 dark:text-slate-400 mt-4 leading-relaxed">{FOUNDER.experience}</p>
+                  <div className="mt-6">
+                    <p className="text-sm font-semibold text-primary dark:text-white mb-3">Education & credentials</p>
+                    <ul className="space-y-2 text-slate-600 dark:text-slate-400 text-sm">
+                      <li className="flex items-start gap-2"><span className="text-accent-gold mt-0.5">🎓</span><span>{FOUNDER.credentials[0]}</span></li>
+                      <li className="flex items-start gap-2"><span className="text-accent-gold mt-0.5">🎓</span><span>{FOUNDER.credentials[1]}</span></li>
+                      <li className="flex items-start gap-2"><span className="text-accent-gold mt-0.5">📜</span><span>{FOUNDER.credentials[2]}</span></li>
+                      <li className="flex items-start gap-2"><span className="text-accent-gold mt-0.5">📜</span><span>{FOUNDER.credentials[3]}</span></li>
+                    </ul>
+                  </div>
+                  <p className="text-slate-600 dark:text-slate-400 mt-6 leading-relaxed">{FOUNDER.passion}</p>
+                  <div className="mt-6 pt-6 border-t border-slate-200 dark:border-slate-700">
+                    <p className="text-sm font-semibold text-primary dark:text-white mb-2">{FOUNDER.philosophyTitle}</p>
+                    <p className="text-lg font-medium text-accent-gold italic">&ldquo;{FOUNDER.philosophy}&rdquo;</p>
                   </div>
                 </div>
               </div>

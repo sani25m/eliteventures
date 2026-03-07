@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import LuxuryTourismHeader from "../components/LuxuryTourismHeader";
 import LuxuryTourismFooter from "../components/LuxuryTourismFooter";
+import { submitForm } from "../api/client";
 
 const HERO_IMAGE = "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1920&q=80";
 const SIGIRIYA_IMAGE = "https://images.unsplash.com/photo-1528181304800-259b08848526?w=800&q=80";
@@ -19,6 +21,36 @@ const ITINERARY_STEPS = [
 ];
 
 export default function LuxuryTourismPage() {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    preferredDates: "",
+    message: "",
+  });
+  const [submitStatus, setSubmitStatus] = useState({ type: "", message: "" });
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSubmitStatus({ type: "", message: "" });
+    setSubmitting(true);
+    try {
+      await submitForm("luxury-tourism", formData);
+      setSubmitStatus({ type: "success", message: "Thank you. Our concierge team will send your bespoke tour quote within 24 hours." });
+      setFormData({ fullName: "", email: "", phone: "", preferredDates: "", message: "" });
+    } catch (err) {
+      setSubmitStatus({ type: "error", message: err.message || "Something went wrong. Please try again." });
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <div className="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display transition-colors duration-300 min-h-screen">
       <LuxuryTourismHeader />
@@ -42,7 +74,10 @@ export default function LuxuryTourismPage() {
               Unrivaled Elegance in the Pearl of the Indian Ocean. Discover curated journeys that blend wild nature with absolute sophistication.
             </p>
             <div className="flex flex-wrap gap-4">
-              <a href="#itinerary" className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-xl font-bold transition-all transform hover:-translate-y-1">
+              <a href="#form" className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-xl font-bold transition-all transform hover:-translate-y-1">
+                Request Tour Quote
+              </a>
+              <a href="#itinerary" className="bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-xl font-bold hover:bg-white/20 transition-all">
                 Explore Itineraries
               </a>
               <a href="#gallery" className="bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-xl font-bold hover:bg-white/20 transition-all">
@@ -72,9 +107,9 @@ export default function LuxuryTourismPage() {
                   &ldquo;Combining Elite Ventures&apos; global luxury standards with deep-rooted Sri Lankan expertise for over 25 years.&rdquo;
                 </p>
               </div>
-              <Link to="/contact-us" className="flex items-center gap-2 text-primary dark:text-emerald-400 font-bold hover:underline">
+              <a href="#form" className="flex items-center gap-2 text-primary dark:text-emerald-400 font-bold hover:underline">
                 Learn More <span className="material-symbols-outlined">arrow_forward</span>
-              </Link>
+              </a>
             </div>
           </div>
         </section>
@@ -123,6 +158,48 @@ export default function LuxuryTourismPage() {
           </div>
         </section>
 
+        {/* Tour videos */}
+        <section id="videos" className="py-24 bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800">
+          <div className="max-w-7xl mx-auto px-6 lg:px-20">
+            <h2 className="text-primary dark:text-white text-3xl md:text-4xl font-black mb-4">Tour Highlights</h2>
+            <p className="text-slate-600 dark:text-slate-400 mb-12 max-w-2xl">Experience a glimpse of your journey with our curated tour footage.</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="rounded-2xl overflow-hidden shadow-xl bg-slate-900">
+                <video
+                  className="w-full aspect-video object-cover"
+                  src="/tour1.mp4"
+                  controls
+                  playsInline
+                  preload="metadata"
+                  poster=""
+                >
+                  Your browser does not support the video tag.
+                </video>
+                <div className="p-4 bg-slate-800/80">
+                  <p className="text-white font-semibold">Luxury Sri Lanka Tour</p>
+                  <p className="text-slate-400 text-sm">Elite Ventures curated experience</p>
+                </div>
+              </div>
+              <div className="rounded-2xl overflow-hidden shadow-xl bg-slate-900">
+                <video
+                  className="w-full aspect-video object-cover"
+                  src="/tour2.mp4"
+                  controls
+                  playsInline
+                  preload="metadata"
+                  poster=""
+                >
+                  Your browser does not support the video tag.
+                </video>
+                <div className="p-4 bg-slate-800/80">
+                  <p className="text-white font-semibold">Colombo</p>
+                  <p className="text-slate-400 text-sm">In collaboration with Chariot Tours & Travels (Colombo)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Gallery */}
         <section id="gallery" className="py-24 bg-primary/5">
           <div className="max-w-7xl mx-auto px-6 lg:px-20">
@@ -131,9 +208,9 @@ export default function LuxuryTourismPage() {
                 <h2 className="text-primary dark:text-white text-3xl md:text-4xl font-black mb-2">Luxury In Every Frame</h2>
                 <p className="text-slate-600 dark:text-slate-400">Sneak peak into our curated villa collection and locations.</p>
               </div>
-              <Link to="/contact-us" className="text-primary dark:text-white font-bold flex items-center gap-1 hover:gap-2 transition-all">
+              <a href="#form" className="text-primary dark:text-white font-bold flex items-center gap-1 hover:gap-2 transition-all">
                 View Gallery <span className="material-symbols-outlined">chevron_right</span>
-              </Link>
+              </a>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
               {GALLERY_IMAGES.map((img) => (
@@ -162,19 +239,105 @@ export default function LuxuryTourismPage() {
               Our concierge team is standing by to craft your personalized 10-day Sri Lankan escape. Contact us for a bespoke quote today.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 relative z-10">
-              <Link
-                to="/contact-us"
+              <a
+                href="#form"
                 className="bg-emerald-500 hover:bg-emerald-600 text-white px-10 py-5 rounded-2xl font-black uppercase tracking-widest text-sm shadow-xl transition-all hover:-translate-y-1 inline-flex items-center justify-center"
               >
                 Request Luxury Tour Quote
-              </Link>
-              <Link
-                to="/contact-us"
+              </a>
+              <a
+                href="#form"
                 className="bg-white/10 border border-white/20 text-white px-10 py-5 rounded-2xl font-bold hover:bg-white/20 transition-all inline-flex items-center justify-center"
               >
                 Speak to an Expert
-              </Link>
+              </a>
             </div>
+          </div>
+        </section>
+
+        {/* Request Quote Form */}
+        <section id="form" className="py-24 px-6 lg:px-20 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
+          <div className="max-w-2xl mx-auto">
+            <h2 className="text-primary dark:text-white text-3xl font-black mb-2 text-center">Request Your Bespoke Tour Quote</h2>
+            <p className="text-slate-600 dark:text-slate-400 text-center mb-10">Share your details and our concierge team will craft a personalized itinerary.</p>
+            <form onSubmit={handleSubmit} className="space-y-5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 p-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="space-y-2">
+                  <label htmlFor="lt-fullName" className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400">Full Name</label>
+                  <input
+                    id="lt-fullName"
+                    name="fullName"
+                    type="text"
+                    placeholder="John Doe"
+                    value={formData.fullName}
+                    onChange={handleChange}
+                    className="w-full rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 p-3.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+                    required
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label htmlFor="lt-email" className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400">Email</label>
+                  <input
+                    id="lt-email"
+                    name="email"
+                    type="email"
+                    placeholder="john@example.com"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 p-3.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <label htmlFor="lt-phone" className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400">Phone</label>
+                <input
+                  id="lt-phone"
+                  name="phone"
+                  type="tel"
+                  placeholder="+971 50 000 0000"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="w-full rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 p-3.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+                />
+              </div>
+              <div className="space-y-2">
+                <label htmlFor="lt-preferredDates" className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400">Preferred travel dates</label>
+                <input
+                  id="lt-preferredDates"
+                  name="preferredDates"
+                  type="text"
+                  placeholder="e.g. March 2025, 10 days"
+                  value={formData.preferredDates}
+                  onChange={handleChange}
+                  className="w-full rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 p-3.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+                />
+              </div>
+              <div className="space-y-2">
+                <label htmlFor="lt-message" className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400">Message</label>
+                <textarea
+                  id="lt-message"
+                  name="message"
+                  rows={4}
+                  placeholder="Tell us about your interests, group size, and any special requests..."
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="w-full rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 p-3.5 text-slate-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none resize-none"
+                />
+              </div>
+              {submitStatus.message && (
+                <p className={`text-sm ${submitStatus.type === "success" ? "text-emerald-600 dark:text-emerald-400" : "text-red-600 dark:text-red-400"}`}>
+                  {submitStatus.message}
+                </p>
+              )}
+              <button
+                type="submit"
+                disabled={submitting}
+                className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-black py-4 rounded-xl uppercase tracking-widest text-sm shadow-xl transition-all disabled:opacity-70 disabled:pointer-events-none"
+              >
+                {submitting ? "Sending…" : "Request Luxury Tour Quote"}
+              </button>
+            </form>
           </div>
         </section>
       </main>

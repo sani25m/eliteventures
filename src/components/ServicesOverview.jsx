@@ -5,37 +5,37 @@ const SERVICES = [
     icon: "corporate_fare",
     title: "Business Setup",
     description: "Full-spectrum company formation across UAE Mainland, Freezones, and Offshore jurisdictions with expert legal guidance.",
-    href: "/company-formation",
+    href: "/company-formation#form",
   },
   {
     icon: "account_balance",
     title: "Corporate Banking",
     description: "Streamlined bank account opening and strategic relationship management with top-tier local and international UAE banks.",
-    href: "/banking-solutions",
+    href: "/banking-solutions#form",
   },
   {
     icon: "calculate",
     title: "Tax Advisory",
     description: "Stay compliant with the latest UAE Corporate Tax and VAT regulations through our expert accounting and advisory services.",
-    href: "/tax-compliance",
+    href: "/tax-compliance#consultation",
   },
   {
     icon: "rocket_launch",
     title: "Project Management",
     description: "From market entry to operational scale-up, we handle the logistics so you can focus on core business growth.",
-    href: "/project-management-advisory",
+    href: "/project-management-advisory#form",
   },
   {
     icon: "language",
     title: "Digital Marketing",
     description: "Localized marketing strategies designed to capture the UAE market and establish a dominant online presence.",
-    href: "/digital-marketing",
+    href: "/digital-marketing#form",
   },
   {
     icon: "luggage",
     title: "Luxury Tourism",
     description: "Bespoke luxury itineraries, concierge services, and premium travel management for corporate and private VIPs.",
-    href: "/luxury-tourism",
+    href: "/luxury-tourism#form",
   },
 ];
 

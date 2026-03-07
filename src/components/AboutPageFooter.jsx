@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import CompanyLogo from "./CompanyLogo";
+import NewsletterForm from "./NewsletterForm";
 
 export default function AboutPageFooter() {
   return (
@@ -43,16 +44,10 @@ export default function AboutPageFooter() {
           <div>
             <h4 className="font-bold mb-6 text-accent-gold">Newsletter</h4>
             <p className="text-sm text-slate-400 mb-4">Subscribe for quarterly market insights.</p>
-            <form className="flex" onSubmit={(e) => e.preventDefault()}>
-              <input
-                type="email"
-                placeholder="Email address"
-                className="bg-white/10 border-none rounded-l-lg px-4 py-2 w-full text-white placeholder:text-slate-500 focus:ring-1 focus:ring-accent-gold focus:outline-none"
-              />
-              <button type="submit" className="bg-accent-gold text-primary font-bold px-4 py-2 rounded-r-lg hover:bg-accent-gold/90 transition-all">
-                Join
-              </button>
-            </form>
+            <NewsletterForm
+              messageSuccessClass="text-emerald-300 text-sm mt-2"
+              messageErrorClass="text-red-300 text-sm mt-2"
+            />
           </div>
         </div>
         <div className="pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">

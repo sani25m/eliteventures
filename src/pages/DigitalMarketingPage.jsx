@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import DigitalMarketingHeader from "../components/DigitalMarketingHeader";
 import DigitalMarketingFooter from "../components/DigitalMarketingFooter";
+import { submitForm } from "../api/client";
 
 const HERO_IMAGE = "https://lh3.googleusercontent.com/aida-public/AB6AXuAyDnz4bWDv1N6pKG6eaQaxi9SXvNkW0RvNg2aZOZiS34mqaRF7MXz-WFe5ii1rb6a-zoby2Dfkq1eaXfrvJ5DcxYlISPDz1TyWC22AIRsSm4cRFoSDCo49tlEGTkROPsuoqZ0rtstOXljOo1LOmsCEenqYjEVege52W2ZK5zsEQzxDVcMmAdYlxrHP0QdpApwkK5gTMYq3GStTdSXCs_3fgW0ClXvLHQ4-a4gjo_QXnw0VvENxxS_tEMscq2yxDP0ECQ2N4rJWoXya";
 
@@ -24,13 +25,28 @@ export default function DigitalMarketingPage() {
     message: "",
   });
 
+  const [submitStatus, setSubmitStatus] = useState({ type: "", message: "" });
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitStatus({ type: "", message: "" });
+    setSubmitting(true);
+    try {
+      await submitForm("digital-marketing", formData);
+      setSubmitStatus({ type: "success", message: "Thank you. We will send your proposal shortly." });
+      setFormData({ fullName: "", email: "", company: "", budget: BUDGET_OPTIONS[0], message: "" });
+    } catch (err) {
+      setSubmitStatus({ type: "error", message: err.message || "Something went wrong. Please try again." });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -57,13 +73,13 @@ export default function DigitalMarketingPage() {
                 Scaling UAE brands through data-driven strategies, premium execution, and high-performance digital ecosystems designed for the Dubai & Abu Dhabi markets.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  to="/contact-us"
+                <a
+                  href="#form"
                   className="bg-primary text-white px-8 py-4 rounded-xl font-bold text-base hover:bg-navy-muted transition-all flex items-center justify-center gap-2 group shadow-xl shadow-primary/20"
                 >
                   Request Marketing Proposal
                   <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
-                </Link>
+                </a>
                 <a
                   href="#services"
                   className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-8 py-4 rounded-xl font-bold text-base hover:bg-slate-50 dark:hover:bg-slate-700 transition-all flex items-center justify-center gap-2"
@@ -197,7 +213,7 @@ export default function DigitalMarketingPage() {
       </section>
 
       {/* Proposal Form CTA */}
-      <section className="py-24 bg-background-light dark:bg-background-dark">
+      <section id="form" className="py-24 bg-background-light dark:bg-background-dark">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="bg-white dark:bg-slate-900 rounded-[2rem] overflow-hidden shadow-2xl border border-slate-100 dark:border-slate-800 grid md:grid-cols-5">
@@ -297,11 +313,17 @@ export default function DigitalMarketingPage() {
                       className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-accent-gold focus:border-transparent outline-none transition-all text-sm resize-none"
                     />
                   </div>
+                  {submitStatus.message && (
+                    <p className={`text-sm ${submitStatus.type === "success" ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}`}>
+                      {submitStatus.message}
+                    </p>
+                  )}
                   <button
                     type="submit"
-                    className="w-full bg-primary text-white py-4 rounded-xl font-bold text-base hover:bg-navy-muted shadow-lg transition-all"
+                    disabled={submitting}
+                    className="w-full bg-primary text-white py-4 rounded-xl font-bold text-base hover:bg-navy-muted shadow-lg transition-all disabled:opacity-70 disabled:pointer-events-none"
                   >
-                    Send Proposal Request
+                    {submitting ? "Sending…" : "Send Proposal Request"}
                   </button>
                   <p className="text-[10px] text-center text-slate-400 uppercase tracking-widest pt-2">
                     Typically responds within 4 business hours

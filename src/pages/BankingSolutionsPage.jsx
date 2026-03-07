@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import BankingSolutionsHeader from "../components/BankingSolutionsHeader";
 import BankingSolutionsFooter from "../components/BankingSolutionsFooter";
+import { submitForm } from "../api/client";
 
 const HERO_IMAGE = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=800&fit=crop&q=80";
 const MAP_BG = "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=1500&q=80";
@@ -44,13 +45,27 @@ export default function BankingSolutionsPage() {
     jurisdiction: "",
   });
 
+  const [submitStatus, setSubmitStatus] = useState({ type: "", message: "" });
+  const [submitting, setSubmitting] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitStatus({ type: "", message: "" });
+    setSubmitting(true);
+    try {
+      await submitForm("banking", formData);
+      setSubmitStatus({ type: "success", message: "Thank you. We will be in touch for pre-qualification." });
+      setFormData({ fullName: "", email: "", businessType: BUSINESS_TYPES[0], revenue: REVENUE_OPTIONS[0], jurisdiction: "" });
+    } catch (err) {
+      setSubmitStatus({ type: "error", message: err.message || "Something went wrong. Please try again." });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -75,12 +90,12 @@ export default function BankingSolutionsPage() {
                 Elite Ventures provides streamlined account opening, multi-currency support, and private wealth management for high-net-worth clients and global corporations.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Link
-                  to="/contact-us"
+                <a
+                  href="#form"
                   className="bg-primary text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-primary/90 transition-all shadow-xl shadow-primary/20"
                 >
                   Get Started Today
-                </Link>
+                </a>
                 <a
                   href="#form"
                   className="bg-white dark:bg-white/5 border border-primary/10 dark:border-white/10 px-8 py-4 rounded-xl font-bold text-lg hover:bg-background-light dark:hover:bg-white/10 transition-all"
@@ -255,11 +270,17 @@ export default function BankingSolutionsPage() {
                     className="w-full bg-background-light dark:bg-slate-800 border-0 rounded-xl px-4 py-3 focus:ring-2 focus:ring-accent-gold text-primary dark:text-white"
                   />
                 </div>
+                {submitStatus.message && (
+                  <p className={`text-sm ${submitStatus.type === "success" ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}`}>
+                    {submitStatus.message}
+                  </p>
+                )}
                 <button
                   type="submit"
-                  className="w-full bg-accent-gold hover:bg-accent-gold/90 text-primary font-black py-4 rounded-xl text-lg transition-all shadow-xl shadow-accent-gold/20 flex items-center justify-center gap-3"
+                  disabled={submitting}
+                  className="w-full bg-accent-gold hover:bg-accent-gold/90 text-primary font-black py-4 rounded-xl text-lg transition-all shadow-xl shadow-accent-gold/20 flex items-center justify-center gap-3 disabled:opacity-70 disabled:pointer-events-none"
                 >
-                  Apply for Banking Assistance
+                  {submitting ? "Sending…" : "Apply for Banking Assistance"}
                   <span className="material-symbols-outlined">arrow_forward</span>
                 </button>
                 <p className="text-center text-[10px] text-primary/40 dark:text-slate-500 uppercase tracking-widest font-bold">

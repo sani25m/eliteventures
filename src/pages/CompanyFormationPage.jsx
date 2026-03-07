@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import CompanyFormationHeader from "../components/CompanyFormationHeader";
 import CompanyFormationFooter from "../components/CompanyFormationFooter";
+import { submitForm } from "../api/client";
 
 const HERO_IMAGE = "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1920&q=80";
 const FORMATION_TYPES = ["Mainland", "Freezone", "Offshore", "Unsure"];
@@ -14,13 +15,27 @@ export default function CompanyFormationPage() {
     message: "",
   });
 
+  const [submitStatus, setSubmitStatus] = useState({ type: "", message: "" });
+  const [submitting, setSubmitting] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitStatus({ type: "", message: "" });
+    setSubmitting(true);
+    try {
+      await submitForm("company-formation", formData);
+      setSubmitStatus({ type: "success", message: "Thank you. We will contact you about your formation options." });
+      setFormData({ fullName: "", email: "", formationType: FORMATION_TYPES[0], message: "" });
+    } catch (err) {
+      setSubmitStatus({ type: "error", message: err.message || "Something went wrong. Please try again." });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -52,12 +67,12 @@ export default function CompanyFormationPage() {
               Expert guidance from inception to operation. Your gateway to elite business opportunities in the Emirates. We handle the complexity, you focus on growth.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link
-                to="/contact-us"
+              <a
+                href="#form"
                 className="bg-accent-gold hover:bg-yellow-600 text-primary px-8 py-4 rounded-lg font-bold text-lg transition-all transform hover:-translate-y-1"
               >
                 Start Your Formation
-              </Link>
+              </a>
               <a
                 href="#pathways"
                 className="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 px-8 py-4 rounded-lg font-bold text-lg transition-all"
@@ -219,7 +234,7 @@ export default function CompanyFormationPage() {
       </section>
 
       {/* Lead Capture CTA */}
-      <section className="py-24">
+      <section id="form" className="py-24">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden flex flex-col md:flex-row">
             <div className="w-full md:w-2/5 bg-primary p-12 text-white flex flex-col justify-center">
@@ -290,9 +305,14 @@ export default function CompanyFormationPage() {
                     className="w-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 rounded-lg p-3 resize-none text-primary dark:text-white"
                   />
                 </div>
+                {submitStatus.message && (
+                  <p className={`sm:col-span-2 text-sm ${submitStatus.type === "success" ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}`}>
+                    {submitStatus.message}
+                  </p>
+                )}
                 <div className="sm:col-span-2">
-                  <button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white font-black py-4 rounded-lg transition-all shadow-xl">
-                    Request Setup Quote
+                  <button type="submit" disabled={submitting} className="w-full bg-primary hover:bg-primary/90 text-white font-black py-4 rounded-lg transition-all shadow-xl disabled:opacity-70 disabled:pointer-events-none">
+                    {submitting ? "Sending…" : "Request Setup Quote"}
                   </button>
                 </div>
               </form>
